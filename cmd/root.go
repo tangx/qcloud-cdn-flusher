@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"os"
 
 	"github.com/go-jarvis/cobrautils"
@@ -18,7 +19,8 @@ var rootCmd = &cobra.Command{
 }
 
 var flag = &qcdn.Flag{
-	SiteMap: "./docs/sitemap.xml",
+	SiteMap:       "./docs/sitemap.xml",
+	LastModInDays: 7,
 }
 
 func init() {
@@ -42,5 +44,6 @@ func execute() {
 		}
 	}
 
-	qcdn.Do(flag)
+	ctx := context.Background()
+	qcdn.Do(ctx, flag)
 }

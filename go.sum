@@ -1,6 +1,8 @@
 github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/go-jarvis/cobrautils v1.3.1 h1:WB1CSOSZ3yrkAPM/7N9sBgy0EnFITsvMCGKJXVWmW6g=
 github.com/go-jarvis/cobrautils v1.3.1/go.mod h1:Wv98uhsQJgQp8JbcZ/Z0j2wPLfipvGIW4yIsSRzDTEM=
+github.com/go-jarvis/logr v0.1.2 h1:/Wz1Qb68MUzrzZHz2uzcam/ZaHLARZmdqtHvBxu8gu8=
+github.com/go-jarvis/logr v0.1.2/go.mod h1:F1VR/Hmql2OFLBPrh8KACQu1BNv8Vma8PfHrXwlZyg0=
 github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
 github.com/inconshreveable/mousetrap v1.0.1 h1:U3uMjPSQEBMNp1lFxmllqCPM6P5u/Xq7Pgzkat/bFNc=
 github.com/inconshreveable/mousetrap v1.0.1/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
@@ -14,6 +16,8 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.570 h1:CIj5s4P
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.570/go.mod h1:KdaW7rZ0Gggg91Acb0LOXyMFi65ICeAaKYC5itHDRVI=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.570 h1:aL8rFQfuQq3G+WeSG1RlPibbfBju024qPC4dli8oqu8=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.570/go.mod h1:7sCQWVkxcsR38nffDW057DRGk8mUjK1Ing/EFOK8s8Y=
+golang.org/x/exp v0.0.0-20221205204356-47842c84f3db h1:D/cFflL63o2KSLJIwjlcIt8PR064j/xsmdEJL/YvY/o=
+golang.org/x/exp v0.0.0-20221205204356-47842c84f3db/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=

@@ -2,16 +2,15 @@ package qcdn
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	cdn "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn/v20180606"
 )
 
-func Do(flag *Flag) {
+func Do(ctx context.Context, flag *Flag) {
 
 	client := mustClient()
-	urls := mustURLs(flag)
+	urls := mustParseURLs(ctx, flag)
 
 	if len(flag.Include) != 0 {
 		urls = append(urls, flag.Include...)
@@ -24,7 +23,6 @@ func Do(flag *Flag) {
 
 	urls = exclude(urls, "posts")
 
-	fmt.Println(urls)
 	if flag.Purge {
 		// 刷新 URL
 		_ = PurgeSite(client, urls)

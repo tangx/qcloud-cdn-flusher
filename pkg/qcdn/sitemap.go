@@ -1,11 +1,15 @@
 package qcdn
 
 import (
+	"context"
 	"encoding/xml"
 	"io"
 	"net/http"
 	"os"
 	"strings"
+	"time"
+
+	"github.com/go-jarvis/logr"
 )
 
 type SiteMap struct {
@@ -19,7 +23,8 @@ type URL struct {
 	LastMod string   `xml:"lastmod,omitempty"`
 }
 
-func mustURLs(flag *Flag) []string {
+func mustParseURLs(ctx context.Context, flag *Flag) []string {
+	log := logr.FromContext(ctx)
 
 	data, err := readSitemap(flag.SiteMap)
 	if err != nil {
@@ -32,9 +37,26 @@ func mustURLs(flag *Flag) []string {
 		panic(err)
 	}
 
-	urls := make([]string, len(sitemap.URLs))
-	for i, u := range sitemap.URLs {
-		urls[i] = u.Loc
+	// format := `2023-01-03T18:15:50+08:00`
+	// urls := make([]string, len(sitemap.URLs))
+	urls := []string{}
+
+	now := time.Now()
+	for _, u := range sitemap.URLs {
+		if u.LastMod == "" {
+			continue
+		}
+
+		lastmod, err := time.Parse(time.RFC3339, u.LastMod)
+		if err != nil {
+			panic(err)
+		}
+
+		tt := lastmod.Add(time.Duration(flag.LastModInDays) * 24 * time.Hour)
+		if tt.After(now) {
+			log.Debug("Add %s", u.Loc)
+			urls = append(urls, u.Loc)
+		}
 	}
 
 	return urls
