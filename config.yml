@@ -1,0 +1,10 @@
+sitemap: https://tangx.in/sitemap.xml
+purge: true
+push: false
+
+include:
+  - https://tangx.in/css/style.css
+  - https://tangx.in/css/index.xml
+
+exclude:
+  - posts
