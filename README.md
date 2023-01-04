@@ -2,10 +2,11 @@
 
 Readme `sitemap.xml` from a website and flush cdn cache in `N` days.
 
+Download [Latest Version](https://github.com/tangx/qcloud-cdn-flusher/releases/latest/download/qcloud-cdn-flusher-linux-amd64)
 
 ## Usage
 
-1. Config: go to [config.yml](config.yml)
+1. Config: go to [config.yml](./config.yml)
 
 ```yaml
 # sample.yml
@@ -28,6 +29,8 @@ export CDN_ACCESS_KEY=akey_asdfasdf
 
 ## Flags
 
+Detail go to [`flag.go`](./pkg/qcdn/flag.go)
+
 ```go
 type Flag struct {
 	SiteMap       string   `flag:"sitemap" usage:"SiteMap 文件"`
@@ -42,7 +45,7 @@ type Flag struct {
 ```
 
 
-## Github Action
+## Github Action Snippet
 
 1. Snippet from Github Action workflow 
 
@@ -55,8 +58,4 @@ type Flag struct {
           CDN_ACCESS_ID: ${{ secrets.CDN_ACCESS_ID }}
           CDN_ACCESS_KEY: ${{ secrets.CDN_ACCESS_KEY }}
 ```
-
-## Release
-
-Download [Latest Version](https://github.com/tangx/qcloud-cdn-flusher/releases/latest/download/qcloud-cdn-flusher-linux-amd64)
 
