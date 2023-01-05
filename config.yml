@@ -1,11 +1,12 @@
 sitemap: https://tangx.in/sitemap.xml
-purge: true
-push: false
+# purge: true
+push: true 
 lastModInDays: 7
 
 include:
   - https://tangx.in/css/style.css
   - https://tangx.in/css/index.xml
+  - https://tangx.in/sitemap.xml
 
 # exclude:
 #   - posts

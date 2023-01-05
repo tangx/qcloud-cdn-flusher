@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/go-jarvis/cobrautils"
+	"github.com/go-jarvis/logr"
 	"github.com/spf13/cobra"
 	"github.com/tangx/qcloud-cdn-flusher/pkg/qcdn"
 	"gopkg.in/yaml.v3"
@@ -45,5 +46,8 @@ func execute() {
 	}
 
 	ctx := context.Background()
+	log := logr.Default().SetLevel(logr.DebugLevel)
+	ctx = logr.WithLogger(ctx, log)
+
 	qcdn.Do(ctx, flag)
 }

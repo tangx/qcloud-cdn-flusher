@@ -3,6 +3,7 @@ package qcdn
 import (
 	"context"
 	"encoding/xml"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -43,6 +44,13 @@ func mustParseURLs(ctx context.Context, flag *Flag) []string {
 
 	now := time.Now()
 	for _, u := range sitemap.URLs {
+		// 如果 N = 0 ， 则不过滤
+		if flag.LastModInDays == 0 {
+			urls = append(urls, u.Loc)
+			continue
+		}
+
+		// N 天内
 		if u.LastMod == "" {
 			continue
 		}
@@ -75,6 +83,9 @@ func readfile(name string) ([]byte, error) {
 }
 
 func readlink(name string) ([]byte, error) {
+
+	// 跳过缓存
+	name = fmt.Sprintf("%s?%d", name, time.Now().Unix())
 
 	resp, err := http.Get(name)
 	if err != nil {
