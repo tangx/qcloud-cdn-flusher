@@ -17,6 +17,8 @@ push: false
 lastModInDays: 7
 ```
 
+> **Attention**: It will push all links from sitemap if `lastModInDays=0`.
+
 2. Run 
 
 ```bash
