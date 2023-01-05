@@ -14,11 +14,12 @@ func Do(ctx context.Context, flag *Flag) {
 
 	client := mustClient()
 	urls := mustParseURLs(ctx, flag)
-	printOutUrls(ctx, urls...)
 
 	if len(flag.Include) != 0 {
 		urls = append(urls, flag.Include...)
 	}
+
+	printOutUrls(ctx, urls...)
 
 	if !flag.Purge && !flag.Push {
 		flag.Purge = true

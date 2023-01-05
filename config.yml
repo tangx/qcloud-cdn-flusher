@@ -1,11 +1,11 @@
 sitemap: https://tangx.in/sitemap.xml
 # purge: true
 push: true 
-lastModInDays: 0
+lastModInDays: 7
 
 include:
   - https://tangx.in/css/style.css
-  - https://tangx.in/css/index.xml
+  - https://tangx.in/index.xml
   - https://tangx.in/sitemap.xml
 
 # exclude:
