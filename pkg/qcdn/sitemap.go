@@ -38,17 +38,23 @@ func mustParseURLs(ctx context.Context, flag *Flag) []string {
 		panic(err)
 	}
 
+	// 如果 LastModInDays 为 0， 则全部添加
+	if flag.LastModInDays == 0 {
+		urls := make([]string, len(sitemap.URLs))
+		for i, u := range sitemap.URLs {
+			urls[i] = u.Loc
+		}
+
+		return urls
+	}
+
+	// 否则按照最近日期添加
 	// format := `2023-01-03T18:15:50+08:00`
 	// urls := make([]string, len(sitemap.URLs))
 	urls := []string{}
 
 	now := time.Now()
 	for _, u := range sitemap.URLs {
-		// 如果 N = 0 ， 则不过滤
-		if flag.LastModInDays == 0 {
-			urls = append(urls, u.Loc)
-			continue
-		}
 
 		// N 天内
 		if u.LastMod == "" {

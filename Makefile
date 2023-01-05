@@ -19,3 +19,6 @@ tidy:
 
 clear:
 	rm -rf ./out
+
+run:
+	go run . -c config.yml 

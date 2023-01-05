@@ -4,13 +4,17 @@ import (
 	"context"
 	"strings"
 
+	"github.com/go-jarvis/logr"
 	cdn "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn/v20180606"
 )
 
 func Do(ctx context.Context, flag *Flag) {
+	log := logr.FromContext(ctx)
+	log.Info("%+v", flag)
 
 	client := mustClient()
 	urls := mustParseURLs(ctx, flag)
+	printOutUrls(ctx, urls...)
 
 	if len(flag.Include) != 0 {
 		urls = append(urls, flag.Include...)
@@ -65,4 +69,11 @@ func exclude(urls []string, list ...string) []string {
 	}
 
 	return result
+}
+
+func printOutUrls(ctx context.Context, urls ...string) {
+	log := logr.FromContext(ctx)
+	for _, u := range urls {
+		log.Debug(u)
+	}
 }
