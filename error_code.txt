@@ -1,0 +1,40 @@
+
+func flush(ctx context.Context, client *cdn.Client, flag *Flag, urls ...string) {
+
+	log := logr.FromContext(ctx)
+
+	do := func(targets []string) {
+		log.Info("本次处理: %d 个", len(targets))
+
+		if flag.Purge {
+			// 刷新 URL
+			_ = PurgeSite(client, targets)
+		}
+
+		if flag.Push {
+			// 预热 URL
+			PushSite(client, targets)
+		}
+	}
+
+	uurls := []string{}
+
+	for i, u := range urls {
+		log.Debug(u)
+		uurls = append(uurls, u)
+
+		if i%80 == 0 {
+
+			// 80 个刷新一次
+			do(uurls)
+
+			// 清空
+			uurls = []string{}
+
+			time.Sleep(time.Second * 1)
+		}
+	}
+
+	do(urls)
+
+}

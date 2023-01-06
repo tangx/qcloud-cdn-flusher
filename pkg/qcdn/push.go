@@ -8,6 +8,8 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
+// PushSite 预热网站
+// https://cloud.tencent.com/document/api/228/37869
 func PushSite(client *cdn.Client, urls []string) {
 
 	// 实例化一个请求对象,每个接口都会对应一个request对象

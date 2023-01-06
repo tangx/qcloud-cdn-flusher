@@ -16,6 +16,8 @@ type PurgeResp struct {
 	} `json:"Response"`
 }
 
+// PurgeSite 刷新缓存， 强制缓存过气
+// https://cloud.tencent.com/document/api/228/37870
 func PurgeSite(client *cdn.Client, urls []string) string {
 
 	// 实例化一个请求对象,每个接口都会对应一个request对象
