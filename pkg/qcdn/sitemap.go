@@ -9,8 +9,6 @@ import (
 	"os"
 	"strings"
 	"time"
-
-	"github.com/go-jarvis/logr"
 )
 
 type SiteMap struct {
@@ -25,7 +23,7 @@ type URL struct {
 }
 
 func mustParseURLs(ctx context.Context, flag *Flag) []string {
-	log := logr.FromContext(ctx)
+	// log := logr.FromContext(ctx)
 
 	data, err := readSitemap(flag.SiteMap)
 	if err != nil {
@@ -68,7 +66,7 @@ func mustParseURLs(ctx context.Context, flag *Flag) []string {
 
 		tt := lastmod.Add(time.Duration(flag.LastModInDays) * 24 * time.Hour)
 		if tt.After(now) {
-			log.Debug("Add %s", u.Loc)
+			// log.Debug("Add %s", u.Loc)
 			urls = append(urls, u.Loc)
 		}
 	}

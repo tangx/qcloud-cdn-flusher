@@ -64,12 +64,12 @@ func exclude(urls []string, list ...string) []string {
 	return result
 }
 
-// func printOutUrls(ctx context.Context, urls ...string) {
-// 	log := logr.FromContext(ctx)
-// 	for _, u := range urls {
-// 		log.Debug(u)
-// 	}
-// }
+func printOutUrls(ctx context.Context, urls ...string) {
+	log := logr.FromContext(ctx)
+	for _, u := range urls {
+		log.Debug(u)
+	}
+}
 
 func flush(ctx context.Context, client *cdn.Client, flag *Flag, urls ...string) {
 
@@ -77,6 +77,7 @@ func flush(ctx context.Context, client *cdn.Client, flag *Flag, urls ...string) 
 
 	do := func(targets []string) {
 		fmt.Println("")
+		printOutUrls(ctx, targets...)
 		log.Info("本次处理: %d 个", len(targets))
 
 		if flag.Purge {
